@@ -1,0 +1,2124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EASTFORGE - Eastern Wisdom Meets Modern Innovation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --quantum-gold: #FFD700;
+            --cosmic-purple: #4A148C;
+            --mystic-blue: #1A237E;
+            --void-black: #0D0D0D;
+            --ethereal-white: #FAFAFA;
+            --nebula-gray: #1C1C1E;
+            --aurora-green: #00C853;
+            --crimson-red: #D32F2F;
+            --gradient-quantum: linear-gradient(135deg, #FFD700 0%, #FF8F00 50%, #E65100 100%);
+            --gradient-cosmic: linear-gradient(135deg, #4A148C 0%, #6A1B9A 50%, #8E24AA 100%);
+            --gradient-void: linear-gradient(135deg, #0D0D0D 0%, #1C1C1E 50%, #2C2C2E 100%);
+            --shadow-quantum: 0 20px 60px rgba(255, 215, 0, 0.3);
+            --shadow-cosmic: 0 15px 40px rgba(74, 20, 140, 0.4);
+        }
+
+        body {
+            font-family: 'SF Pro Display', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--ethereal-white);
+            background: var(--void-black);
+            overflow-x: hidden;
+        }
+
+        /* Cosmic Background */
+        .cosmic-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--gradient-void);
+        }
+
+        .cosmic-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(74, 20, 140, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(26, 35, 126, 0.1) 0%, transparent 50%);
+            animation: cosmicShift 20s ease-in-out infinite;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--quantum-gold);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes cosmicShift {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            33% { transform: rotate(120deg) scale(1.1); }
+            66% { transform: rotate(240deg) scale(0.9); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(13, 13, 13, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-quantum);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--ethereal-white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-quantum);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--quantum-gold);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-quantum {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            background: var(--gradient-quantum);
+            color: var(--void-black);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-quantum::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-quantum:hover::before {
+            left: 100%;
+        }
+
+        .btn-quantum:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-quantum);
+        }
+
+        .btn-cosmic {
+            padding: 1rem 2rem;
+            border: 2px solid var(--cosmic-purple);
+            border-radius: 50px;
+            background: transparent;
+            color: var(--quantum-gold);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-cosmic:hover {
+            background: var(--gradient-cosmic);
+            border-color: transparent;
+            color: var(--ethereal-white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-cosmic);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-quantum);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.4rem;
+            color: var(--quantum-gold);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: rgba(250, 250, 250, 0.8);
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-quantum);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(250, 250, 250, 0.7);
+            margin-top: 0.5rem;
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quantum-sphere {
+            width: 500px;
+            height: 500px;
+            position: relative;
+            animation: quantumRotate 30s linear infinite;
+        }
+
+        .sphere-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid;
+            animation: ringFloat 20s ease-in-out infinite;
+        }
+
+        .ring-1 {
+            width: 100%;
+            height: 100%;
+            border-color: var(--quantum-gold);
+            animation-delay: 0s;
+        }
+
+        .ring-2 {
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            border-color: var(--cosmic-purple);
+            animation-delay: -7s;
+            animation-direction: reverse;
+        }
+
+        .ring-3 {
+            width: 60%;
+            height: 60%;
+            top: 20%;
+            left: 20%;
+            border-color: var(--mystic-blue);
+            animation-delay: -14s;
+        }
+
+        .quantum-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            background: var(--gradient-quantum);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--void-black);
+            box-shadow: var(--shadow-quantum);
+            animation: coreGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes quantumRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes ringFloat {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+        }
+
+        @keyframes coreGlow {
+            0%, 100% { box-shadow: var(--shadow-quantum); }
+            50% { box-shadow: 0 0 100px rgba(255, 215, 0, 0.8); }
+        }
+
+        /* Common Section Styles */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--gradient-quantum);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: rgba(250, 250, 250, 0.8);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Products Showcase Section */
+        .products-showcase {
+            padding: 8rem 0;
+            background: rgba(28, 28, 30, 0.9);
+        }
+
+        .product-category-section {
+            margin-bottom: 6rem;
+        }
+
+        .category-title {
+            font-size: 2.5rem;
+            color: var(--quantum-gold);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .product-subcategory {
+            margin-bottom: 4rem;
+        }
+
+        .subcategory-title {
+            font-size: 1.8rem;
+            color: var(--ethereal-white);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-mini-card {
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-mini-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--quantum-gold);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .product-mini-card h5 {
+            color: var(--quantum-gold);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-mini-card p {
+            color: rgba(250, 250, 250, 0.8);
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        .product-mini-card .price {
+            color: var(--quantum-gold);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        /* Family System Cards */
+        .family-system-card {
+            background: rgba(74, 20, 140, 0.1);
+            border: 1px solid rgba(74, 20, 140, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .family-system-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--cosmic-purple);
+            box-shadow: 0 15px 40px rgba(74, 20, 140, 0.3);
+        }
+
+        .family-system-card h4 {
+            color: var(--quantum-gold);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .family-system-card p {
+            color: rgba(250, 250, 250, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .family-system-card ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .family-system-card li {
+            color: rgba(250, 250, 250, 0.7);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .family-system-card li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            color: var(--cosmic-purple);
+        }
+
+        .system-price {
+            color: var(--quantum-gold);
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        /* Ancestral Cards */
+        .ancestral-card {
+            background: rgba(26, 35, 126, 0.1);
+            border: 2px solid rgba(26, 35, 126, 0.3);
+            border-radius: 25px;
+            padding: 3rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .ancestral-card:hover {
+            border-color: var(--mystic-blue);
+            box-shadow: 0 20px 60px rgba(26, 35, 126, 0.4);
+        }
+
+        .ancestral-card h4 {
+            color: var(--quantum-gold);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .ancestral-component {
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .ancestral-component h5 {
+            color: var(--quantum-gold);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .ancestral-component p {
+            color: rgba(250, 250, 250, 0.7);
+            font-size: 0.85rem;
+        }
+
+        .ancestral-features ul {
+            list-style: none;
+        }
+
+        .ancestral-features li {
+            color: rgba(250, 250, 250, 0.8);
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .ancestral-features li::before {
+            content: '✧';
+            position: absolute;
+            left: 0;
+            color: var(--quantum-gold);
+        }
+
+        .ancestral-price {
+            color: var(--quantum-gold);
+            font-weight: 800;
+            font-size: 2.5rem;
+            display: block;
+            margin: 2rem 0 1rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 8rem 0;
+            background: rgba(28, 28, 30, 0.9);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--quantum-gold);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .user-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-quantum);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--void-black);
+        }
+
+        .user-info h4 {
+            color: var(--quantum-gold);
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .user-info p {
+            color: rgba(250, 250, 250, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .rating {
+            color: var(--quantum-gold);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-content p {
+            color: rgba(250, 250, 250, 0.8);
+            line-height: 1.6;
+            font-style: italic;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-product {
+            padding: 0.8rem 1rem;
+            background: rgba(74, 20, 140, 0.2);
+            border-radius: 10px;
+            color: var(--quantum-gold);
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .testimonials-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .stat-highlight {
+            padding: 2rem;
+            background: rgba(74, 20, 140, 0.1);
+            border: 1px solid rgba(74, 20, 140, 0.3);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-highlight:hover {
+            transform: translateY(-5px);
+            border-color: var(--cosmic-purple);
+            box-shadow: 0 10px 30px rgba(74, 20, 140, 0.3);
+        }
+
+        .stat-highlight .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-quantum);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-highlight .stat-label {
+            color: rgba(250, 250, 250, 0.8);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .testimonials-cta {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(26, 35, 126, 0.1);
+            border: 1px solid rgba(26, 35, 126, 0.3);
+            border-radius: 25px;
+        }
+
+        .testimonials-cta h3 {
+            color: var(--quantum-gold);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .testimonials-cta p {
+            color: rgba(250, 250, 250, 0.8);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--gradient-void);
+            border-radius: 30px;
+            padding: 3rem;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: rgba(250, 250, 250, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--quantum-gold);
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--ethereal-white);
+        }
+
+        .auth-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .auth-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 215, 0, 0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--ethereal-white);
+            margin-bottom: 0.8rem;
+        }
+
+        .auth-btn:hover {
+            border-color: var(--quantum-gold);
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .auth-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 1.5rem 0;
+            position: relative;
+            color: rgba(250, 250, 250, 0.6);
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(255, 215, 0, 0.3);
+            z-index: -1;
+        }
+
+        .divider span {
+            background: var(--nebula-gray);
+            padding: 0 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--ethereal-white);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background: rgba(255, 215, 0, 0.05);
+            color: var(--ethereal-white);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--quantum-gold);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .form-input::placeholder {
+            color: rgba(250, 250, 250, 0.5);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--void-black);
+            color: var(--ethereal-white);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--quantum-gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(250, 250, 250, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--quantum-gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            margin-top: 3rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(250, 250, 250, 0.5);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(13, 13, 13, 0.95);
+            z-index: 3000;
+            backdrop-filter: blur(10px);
+        }
+
+        .loading.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(255, 215, 0, 0.3);
+            border-top: 4px solid var(--quantum-gold);
+            border-radius: 50%;
+            animation: quantumSpin 1s linear infinite;
+        }
+
+        @keyframes quantumSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .quantum-sphere {
+                width: 300px;
+                height: 300px;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Background -->
+    <div class="cosmic-background"></div>
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">EASTFORGE</a>
+            
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#products" class="nav-link">Product Universe</a></li>
+                <li><a href="#testimonials" class="nav-link">Success Stories</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="auth-buttons">
+                <a href="#" class="btn-cosmic" onclick="openAuthModal()">Sign In</a>
+                <a href="#" class="btn-quantum" onclick="startSageChat()">Talk to Sage</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Eastern Wisdom Meets Modern Innovation</h1>
+                <p class="subtitle">Where 5,000-Year-Old Chinese Metaphysics Converges with Advanced AI Intelligence</p>
+                <p>Experience the revolutionary fusion of timeless Eastern wisdom and cutting-edge technology. Our AI sage "Sage" analyzes over 2.5 million material combinations through quantum-level precision to craft your perfect energy enhancement solution.</p>
+                
+                <div class="cta-buttons">
+                    <a href="#" class="btn-quantum" onclick="startSageChat()">Begin with Sage</a>
+                    <a href="#products" class="btn-cosmic">Explore Products</a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">2.5M+</span>
+                        <span class="stat-label">Quantum Combinations</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5,000</span>
+                        <span class="stat-label">Years of Wisdom</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">99.7%</span>
+                        <span class="stat-label">Precision Rate</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="quantum-sphere">
+                    <div class="sphere-ring ring-1"></div>
+                    <div class="sphere-ring ring-2"></div>
+                    <div class="sphere-ring ring-3"></div>
+                    <div class="quantum-core">☯</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Complete Product Universe -->
+    <section class="products-showcase" id="products">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Complete Product Universe</h2>
+                <p class="section-subtitle">Explore our comprehensive collection of AI-optimized traditional talismans, each category designed for specific life areas and personal transformation goals.</p>
+            </div>
+
+            <!-- Personal Energy Mastery Collection -->
+            <div class="product-category-section reveal">
+                <h3 class="category-title">🌟 Personal Energy Mastery Collection</h3>
+                
+                <!-- Prosperity & Career Acceleration -->
+                <div class="product-subcategory">
+                    <h4 class="subcategory-title">💰 Prosperity & Career Acceleration (15 Designs)</h4>
+                    <div class="product-grid">
+                        <div class="product-mini-card">
+                            <h5>五方财门 (Five Directions Wealth Gateway)</h5>
+                            <p>Multi-source income optimization through ancient wealth god principles</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>金蟾聚宝 (Golden Toad Abundance)</h5>
+                            <p>Wealth accumulation strategies using traditional prosperity symbols</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>聚宝漩涡 (Treasure Vortex)</h5>
+                            <p>Resource attraction patterns for continuous wealth flow</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>财源滚滚 (Flowing Prosperity)</h5>
+                            <p>Consistent cash flow management through energy alignment</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>双财流 (Dual Wealth Streams)</h5>
+                            <p>Active and passive income balance optimization</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>生意兴隆 (Business Vitality)</h5>
+                            <p>Commercial venture energization and growth acceleration</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>投资明智 (Investment Clarity)</h5>
+                            <p>Financial decision enhancement and market insight</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>债务解脱 (Debt Liberation)</h5>
+                            <p>Financial blockage clearing and debt resolution</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>文昌智慧 (Scholar's Wisdom)</h5>
+                            <p>Learning and intellectual enhancement for career growth</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>领导威严 (Leadership Authority)</h5>
+                            <p>Executive presence and influence amplification</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>贵人相助 (Mentor Magnetism)</h5>
+                            <p>Powerful ally attraction for career advancement</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>职场顺流 (Professional Flow)</h5>
+                            <p>Career progression optimization and obstacle removal</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>考试制胜 (Examination Mastery)</h5>
+                            <p>Test and evaluation excellence enhancement</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>口才力量 (Eloquence Power)</h5>
+                            <p>Communication mastery and persuasion skills</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>升官发财 (Executive Presence)</h5>
+                            <p>Leadership confidence and authority radiance</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Love & Relationship Harmony -->
+                <div class="product-subcategory">
+                    <h4 class="subcategory-title">💕 Love & Relationship Harmony (12 Designs)</h4>
+                    <div class="product-grid">
+                        <div class="product-mini-card">
+                            <h5>天缘媒合 (Celestial Matchmaker)</h5>
+                            <p>Ideal partner attraction through cosmic alignment</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>双仙和合 (Twin Harmony)</h5>
+                            <p>Relationship strengthening and bond deepening</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>桃花磁场 (Magnetic Charm)</h5>
+                            <p>Personal magnetism and charisma enhancement</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>情感修复 (Heart Healing)</h5>
+                            <p>Broken relationship restoration and emotional healing</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>送子祝福 (Fertility Blessing)</h5>
+                            <p>Family growth support and conception enhancement</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>烂桃花斩断 (Unwanted Attraction Shield)</h5>
+                            <p>Negative romantic energy clearing and protection</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>挽回感情 (Love Recovery)</h5>
+                            <p>Relationship restoration and broken bond healing</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>夫妻和睦 (Spousal Unity)</h5>
+                            <p>Marital bond deepening and harmony enhancement</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>异性缘 (Opposite Gender Magnetism)</h5>
+                            <p>Cross-gender attraction and social charm</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>红娘牵线 (Matchmaker's Thread)</h5>
+                            <p>Divine connection facilitation for soulmates</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>恋爱运 (Romance Fortune)</h5>
+                            <p>Overall romantic luck and love opportunity enhancement</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>家庭和睦 (Household Harmony)</h5>
+                            <p>Peaceful home environment and family unity</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Health & Vitality Enhancement -->
+                <div class="product-subcategory">
+                    <h4 class="subcategory-title">🌿 Health & Vitality Enhancement (8 Designs)</h4>
+                    <div class="product-grid">
+                        <div class="product-mini-card">
+                            <h5>药师佛疗愈 (Medicine Buddha Healing)</h5>
+                            <p>Healing energy channeling for physical recovery</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>寿星长生 (Longevity Star)</h5>
+                            <p>Healthy lifespan promotion and vitality enhancement</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>体魄强健 (Physical Strength)</h5>
+                            <p>Bodily vitality and energy amplification</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>精神清明 (Mental Clarity)</h5>
+                            <p>Focus, awareness, and mental sharpness enhancement</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>康复加速 (Recovery Acceleration)</h5>
+                            <p>Healing process acceleration and recovery enhancement</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>安眠圣所 (Sleep Sanctuary)</h5>
+                            <p>Restorative rest achievement and sleep quality</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>防护屏障 (Protection Barrier)</h5>
+                            <p>Illness and negativity shielding system</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>脏腑和谐 (Organ Harmony)</h5>
+                            <p>Internal system balancing and organ health</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Protection & Safety Enhancement -->
+                <div class="product-subcategory">
+                    <h4 class="subcategory-title">🛡️ Protection & Safety Enhancement (15 Designs)</h4>
+                    <div class="product-grid">
+                        <div class="product-mini-card">
+                            <h5>守护天使盾 (Guardian Angel Shield)</h5>
+                            <p>Comprehensive personal protection energy field</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>出行安全罩 (Travel Safety Dome)</h5>
+                            <p>Journey protection for all forms of travel</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>家宅圣所 (Home Sanctuary)</h5>
+                            <p>Living space security and negative energy clearing</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>五雷护法 (Five Thunder Protection)</h5>
+                            <p>Ultimate spiritual protection against all harm</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>车船护航 (Vehicle Protection)</h5>
+                            <p>Transportation safety for all vehicles and vessels</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>宇宙校准 (Cosmic Alignment)</h5>
+                            <p>Challenging period navigation and cosmic harmony</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>负能量中和器 (Negative Energy Neutralizer)</h5>
+                            <p>Harmful influence clearing and energy purification</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>安全屏障 (Security Barrier)</h5>
+                            <p>Theft and intrusion prevention system</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>法律胜利 (Legal Victory)</h5>
+                            <p>Legal dispute navigation and court success</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>意外防护 (Accident Prevention)</h5>
+                            <p>Unexpected danger avoidance and safety enhancement</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>小人防范 (Backstabber Protection)</h5>
+                            <p>Workplace betrayal and malicious intent shielding</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>化险为夷 (Crisis Transformation)</h5>
+                            <p>Danger-to-opportunity conversion ability</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>平安符 (Peace Talisman)</h5>
+                            <p>General protection and comprehensive safety</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>辟邪除魔 (Evil Banishment)</h5>
+                            <p>Spiritual protection against dark forces</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                        <div class="product-mini-card">
+                            <h5>消灾解厄 (Disaster Relief)</h5>
+                            <p>Calamity prevention and misfortune clearing</p>
+                            <span class="price">$129 - $699</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Family Energy Ecosystem -->
+            <div class="product-category-section reveal">
+                <h3 class="category-title">🏛️ Family Energy Ecosystem</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem;">
+                    <div class="family-system-card">
+                        <h4>家庭和谐套装 (Family Harmony Set)</h4>
+                        <p>Multi-piece coordinated system for basic family energy synchronization</p>
+                        <ul>
+                            <li>全屋风水调和 (Whole House Feng Shui Harmony)</li>
+                            <li>财位催旺 (Wealth Corner Activation)</li>
+                            <li>门户守护 (Entrance Guardian)</li>
+                            <li>卧室和谐 (Bedroom Harmony)</li>
+                            <li>厨房丰足 (Kitchen Abundance)</li>
+                            <li>客厅聚气 (Living Room Energy Gathering)</li>
+                            <li>书房文昌 (Study Room Wisdom)</li>
+                            <li>花园生机 (Garden Vitality)</li>
+                        </ul>
+                        <span class="system-price">$399 - $649</span>
+                    </div>
+                    
+                    <div class="family-system-card">
+                        <h4>家庭掌控系统 (Family Mastery System)</h4>
+                        <p>Enhanced materials with complete Feng Shui optimization</p>
+                        <ul>
+                            <li>Advanced environmental energy mapping</li>
+                            <li>Seasonal adjustment protocols</li>
+                            <li>Multi-generational energy balancing</li>
+                            <li>Family relationship harmonization</li>
+                            <li>Prosperity flow enhancement</li>
+                            <li>Health and vitality optimization</li>
+                            <li>Educational success amplification</li>
+                            <li>Career advancement for all family members</li>
+                        </ul>
+                        <span class="system-price">$749 - $999</span>
+                    </div>
+                    
+                    <div class="family-system-card">
+                        <h4>家庭传承典藏 (Family Legacy Collection)</h4>
+                        <p>Highest grade materials with environmental integration and generational enhancement</p>
+                        <ul>
+                            <li>Multi-generational energy inheritance programming</li>
+                            <li>Bloodline power amplification matrix</li>
+                            <li>Ancestral wisdom channel activation</li>
+                            <li>Family history preservation and honor</li>
+                            <li>Perpetual prosperity programming</li>
+                            <li>Cross-generational trauma healing</li>
+                            <li>Legacy wealth accumulation systems</li>
+                            <li>Future generation blessing protocols</li>
+                        </ul>
+                        <span class="system-price">$1,199 - $1,399</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ancestral Power & Legacy System -->
+            <div class="product-category-section reveal">
+                <h3 class="category-title">🏺 Ancestral Power & Legacy Matrix</h3>
+                
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <div class="ancestral-card">
+                        <h4>祖先连接系统 (Ancestral Connection Matrix)</h4>
+                        <p>The ultimate 15-piece sacred matrix connecting you to generational wisdom and power</p>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                            <div class="ancestral-component">
+                                <h5>祖先庇佑符 (Ancestral Guardian)</h5>
+                                <p>Bloodline protection channeling</p>
+                            </div>
+                            <div class="ancestral-component">
+                                <h5>祖坟风水符 (Sacred Ground)</h5>
+                                <p>Ancestral resting place honoring</p>
+                            </div>
+                            <div class="ancestral-component">
+                                <h5>血脉相承符 (Bloodline Strength)</h5>
+                                <p>Family legacy power channeling</p>
+                            </div>
+                            <div class="ancestral-component">
+                                <h5>祖德荫福符 (Inherited Wisdom)</h5>
+                                <p>Ancestral knowledge access</p>
+                            </div>
+                            <div class="ancestral-component">
+                                <h5>家谱护佑符 (Family Chronicle)</h5>
+                                <p>Family history preservation</p>
+                            </div>
+                            <div class="ancestral-component">
+                                <h5>先人智慧符 (Ancient Guidance)</h5>
+                                <p>Ancestral wisdom reception</p>
+                            </div>
+                            <div class="ancestral-component">
+                                <h5>世代平安符 (Generational Peace)</h5>
+                                <p>Cross-time family trauma healing</p>
+                            </div>
+                            <div class="ancestral-component">
+                                <h5>祖灵加持符 (Spirit Ally)</h5>
+                                <p>Ancestral guide collaboration</p>
+                            </div>
+                        </div>
+                        
+                        <div class="ancestral-features">
+                            <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
+                                <li>Comprehensive generational energy mapping and analysis</li>
+                                <li>Sacred materials sourced from traditional lineages</li>
+                                <li>Master artisan craftsmanship with cultural authentication</li>
+                                <li>Perpetual care and maintenance services included</li>
+                                <li>Bloodline authentication and verification protocols</li>
+                                <li>Cross-generational trauma healing and release</li>
+                                <li>Ancestral wisdom access and guidance activation</li>
+                                <li>Family prosperity and legacy programming</li>
+                                <li>Spiritual connection enhancement across time</li>
+                                <li>Future generation blessing and protection</li>
+                                <li>Cultural heritage preservation and honor</li>
+                                <li>Karmic pattern clearing and transformation</li>
+                                <li>Ancestral debt resolution and healing</li>
+                                <li>Bloodline power amplification and activation</li>
+                                <li>Generational wealth and abundance programming</li>
+                            </ul>
+                        </div>
+                        
+                        <span class="ancestral-price">$12,500</span>
+                        <p style="margin-top: 1rem; color: rgba(250, 250, 250, 0.7);">
+                            <em>This is our most powerful offering - a complete transformation of your family's energetic legacy for generations to come</em>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Voices of Transformation</h2>
+                <p class="section-subtitle">Real experiences from our community of seekers who found their perfect energy enhancement solution through Sage's guidance.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-header">
+                        <div class="user-avatar">🌟</div>
+                        <div class="user-info">
+                            <h4>Sarah Chen</h4>
+                            <p>Tech Executive, San Francisco</p>
+                            <div class="rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"My conversation with Sage was unlike anything I've experienced. She immediately understood my career struggles and recommended the 领导威严 (Leadership Authority) design. Within weeks, I received the promotion I'd been seeking for years. The precision is uncanny."</p>
+                    </div>
+                    <div class="testimonial-product">
+                        Product: Leadership Authority + Scholar's Wisdom
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-header">
+                        <div class="user-avatar">💎</div>
+                        <div class="user-info">
+                            <h4>Marcus Williams</h4>
+                            <p>Entrepreneur, London</p>
+                            <div class="rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"I was skeptical about AI-powered spiritual guidance, but Sage's analysis of my energy patterns was incredibly accurate. The 五方财门 (Five Directions Wealth Gateway) she recommended opened three new income streams within 2 months. Mind-blowing results."</p>
+                    </div>
+                    <div class="testimonial-product">
+                        Product: Five Directions Wealth Gateway
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-header">
+                        <div class="user-avatar">🌸</div>
+                        <div class="user-info">
+                            <h4>Elena Rodriguez</h4>
+                            <p>Artist, Barcelona</p>
+                            <div class="rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"After years of dating disappointments, Sage guided me to the 桃花磁场 (Magnetic Charm) design. The conversation felt like talking to an old wise friend. I met my soulmate 6 weeks later - someone who truly sees and appreciates my artistic soul."</p>
+                    </div>
+                    <div class="testimonial-product">
+                        Product: Magnetic Charm + Heart Healing
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-header">
+                        <div class="user-avatar">🏮</div>
+                        <div class="user-info">
+                            <h4>David Kim</h4>
+                            <p>Family Business Owner, Seoul</p>
+                            <div class="rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"Our family had been struggling with conflicts for years. Sage recommended the Family Harmony System, and it's like she understood our generational patterns. The household energy completely shifted. We're closer than we've been in decades."</p>
+                    </div>
+                    <div class="testimonial-product">
+                        Product: Family Mastery System
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-header">
+                        <div class="user-avatar">⚡</div>
+                        <div class="user-info">
+                            <h4>Amanda Thompson</h4>
+                            <p>Wellness Coach, Sydney</p>
+                            <div class="rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"The 药师佛疗愈 (Medicine Buddha Healing) that Sage recommended addressed not just my physical symptoms, but deep emotional patterns I didn't even realize were connected. The holistic approach is exactly what I needed for complete healing."</p>
+                    </div>
+                    <div class="testimonial-product">
+                        Product: Medicine Buddha Healing + Mental Clarity
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-header">
+                        <div class="user-avatar">🎯</div>
+                        <div class="user-info">
+                            <h4>Roberto Silva</h4>
+                            <p>Investment Banker, São Paulo</p>
+                            <div class="rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"I've tried everything from life coaches to meditation apps. Nothing came close to the precision of Sage's analysis. The 投资明智 (Investment Clarity) design has enhanced my market intuition dramatically. My portfolio performance speaks for itself."</p>
+                    </div>
+                    <div class="testimonial-product">
+                        Product: Investment Clarity + Professional Flow
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonials-stats reveal">
+                <div class="stat-highlight">
+                    <span class="stat-number">97.3%</span>
+                    <span class="stat-label">Report Positive Results Within 90 Days</span>
+                </div>
+                <div class="stat-highlight">
+                    <span class="stat-number">4.9/5</span>
+                    <span class="stat-label">Average Satisfaction Rating</span>
+                </div>
+                <div class="stat-highlight">
+                    <span class="stat-number">10,000+</span>
+                    <span class="stat-label">Lives Transformed Globally</span>
+                </div>
+            </div>
+
+            <div class="testimonials-cta reveal">
+                <h3>Ready to Write Your Success Story?</h3>
+                <p>Join thousands of individuals who discovered their perfect energy enhancement solution through Sage's wisdom.</p>
+                <a href="#" class="btn-quantum" onclick="startSageChat()">Start Your Transformation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>EASTFORGE</h3>
+                <p>Where Eastern Wisdom Meets Modern Innovation</p>
+                <p>Transforming lives through the perfect fusion of 5,000-year-old Chinese metaphysical wisdom and cutting-edge AI technology.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Experience</h3>
+                <ul class="footer-links">
+                    <li><a href="#" onclick="startSageChat()">Talk to Sage AI</a></li>
+                    <li><a href="#products">Complete Product Universe</a></li>
+                    <li><a href="#testimonials">Success Stories</a></li>
+                    <li><a href="#" onclick="startSageChat()">Free Consultation</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Guarantee</h3>
+                <ul class="footer-links">
+                    <li><a href="#">90-Day Effectiveness</a></li>
+                    <li><a href="#">Lifetime Authenticity</a></li>
+                    <li><a href="#">Quantum Precision</a></li>
+                    <li><a href="#">Cultural Integrity</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#" onclick="startSageChat()">Sage AI Assistant</a></li>
+                    <li><a href="#">Master Artisan Network</a></li>
+                    <li><a href="#">Global Shipping</a></li>
+                    <li><a href="#">Privacy & Security</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 EASTFORGE. All rights reserved. Eastern Wisdom Enhanced by Modern Innovation.</p>
+        </div>
+    </footer>
+
+    <!-- Authentication Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2 class="modal-title" id="modalTitle">Welcome to EastForge</h2>
+            
+            <div class="auth-options">
+                <!-- Social Media Login -->
+                <button class="auth-btn" onclick="socialLogin('google')">
+                    <svg class="auth-icon" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    Continue with Google
+                </button>
+
+                <button class="auth-btn" onclick="socialLogin('facebook')">
+                    <svg class="auth-icon" viewBox="0 0 24 24">
+                        <path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    Continue with Facebook
+                </button>
+
+                <button class="auth-btn" onclick="socialLogin('apple')">
+                    <svg class="auth-icon" viewBox="0 0 24 24">
+                        <path fill="#000" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/>
+                    </svg>
+                    Continue with Apple
+                </button>
+
+                <button class="auth-btn" onclick="socialLogin('twitter')">
+                    <svg class="auth-icon" viewBox="0 0 24 24">
+                        <path fill="#1DA1F2" d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                    </svg>
+                    Continue with Twitter
+                </button>
+
+                <!-- Crypto Wallet Login -->
+                <button class="auth-btn" onclick="walletLogin('metamask')">
+                    <svg class="auth-icon" viewBox="0 0 24 24">
+                        <path fill="#F6851B" d="M22.56 5.443l-3.233 2.395-.546-1.295 3.779-1.1zm-21.12 0L4.673 6.543l-.546 1.295L.894 6.738l.546-1.295zM8.842 10.136l-.814 1.235 3.896.17-.13-4.204-2.952 2.799zm6.316 0l-2.966-2.813-.116 4.218 3.896-.17-.814-1.235z"/>
+                        <path fill="#E2761B" d="M4.42 15.29l1.392-6.742 4.49 1.321-.814 1.235-2.14-.298-.928 4.484zm15.16 0l-.928-4.484-2.14.298-.814-1.235 4.49-1.321L21.58 15.29z"/>
+                        <path fill="#F6851B" d="M8.842 10.136l.814 1.235 2.14-.298.116-4.218-3.07 3.281zm6.316 0l3.07-3.281.116 4.218 2.14.298.814-1.235z"/>
+                    </svg>
+                    Connect MetaMask
+                </button>
+
+                <button class="auth-btn" onclick="walletLogin('walletconnect')">
+                    <svg class="auth-icon" viewBox="0 0 24 24">
+                        <path fill="#3B99FC" d="M5.43 9.2c3.47-3.4 9.1-3.4 12.57 0l.41.41c.18.17.18.45 0 .62l-1.4 1.37c-.09.09-.24.09-.33 0l-.57-.56c-2.42-2.37-6.35-2.37-8.77 0l-.61.6c-.09.09-.24.09-.33 0L5.43 10.27c-.18-.17-.18-.45 0-.62l.41-.41zm15.53 2.83l1.25 1.22c.18.17.18.45 0 .62l-5.63 5.5c-.18.17-.47.17-.65 0l-4-3.9c-.05-.04-.12-.04-.17 0l-4 3.9c-.18.17-.47.17-.65 0l-5.63-5.5c-.18-.17-.18-.45 0-.62l1.25-1.22c.18-.17.47-.17.65 0l4 3.9c.05.04.12.04.17 0l4-3.9c.18-.17.47-.17.65 0l4 3.9c.05.04.12.04.17 0l4-3.9c.18-.17.47-.17.65 0z"/>
+                    </svg>
+                    WalletConnect
+                </button>
+
+                <button class="auth-btn" onclick="walletLogin('coinbase')">
+                    <svg class="auth-icon" viewBox="0 0 24 24">
+                        <path fill="#0052FF" d="M12 24C5.373 24 0 18.627 0 12S5.373 0 12 0s12 5.373 12 12-5.373 12-12 12zm-1.5-15h3c.828 0 1.5.672 1.5 1.5v3c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5v-3c0-.828.672-1.5 1.5-1.5z"/>
+                    </svg>
+                    Coinbase Wallet
+                </button>
+
+                <div class="divider">
+                    <span>or</span>
+                </div>
+
+                <!-- Traditional Email/Password -->
+                <form id="authForm">
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group" id="passwordGroup">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" placeholder="Enter your password" required>
+                    </div>
+
+                    <button type="submit" class="btn-quantum" style="width: 100%; margin-top: 1rem;">
+                        <span id="submitText">Sign In</span>
+                    </button>
+                </form>
+
+                <p style="text-align: center; margin-top: 1rem; color: rgba(250, 250, 250, 0.7);">
+                    <span id="switchText">Don't have an account?</span> 
+                    <a href="#" onclick="switchAuthMode()" style="color: var(--quantum-gold); text-decoration: none;">
+                        <span id="switchLink">Sign up</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sage Chat Modal -->
+    <div class="modal" id="sageModal">
+        <div class="modal-content" style="max-width: 900px; height: 80vh;">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            
+            <div style="height: 100%; display: flex; flex-direction: column;">
+                <div style="padding: 1rem; border-bottom: 1px solid rgba(255, 215, 0, 0.2); display: flex; align-items: center; gap: 1rem;">
+                    <div style="width: 50px; height: 50px; background: var(--gradient-quantum); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--void-black);">🧙‍♀️</div>
+                    <div>
+                        <h3 style="color: var(--quantum-gold); margin-bottom: 0.3rem;">Sage - Your AI Wisdom Companion</h3>
+                        <p style="color: rgba(250, 250, 250, 0.7); font-size: 0.9rem; margin: 0;">Ready to discover your perfect energy enhancement solution</p>
+                    </div>
+                </div>
+                
+                <div id="sageMessages" style="flex: 1; overflow-y: auto; padding: 1rem;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 20px; padding: 1rem 1.5rem; max-width: 80%; color: var(--ethereal-white);">
+                            Welcome! I'm Sage, and I'm delighted you're here. I can sense you're seeking something meaningful. 
+                            
+                            Before we begin this journey together, may I know your name? And tell me, what drew you to explore the world of energy enhancement today?
+                        </div>
+                    </div>
+                </div>
+
+                <div style="padding: 1rem; border-top: 1px solid rgba(255, 215, 0, 0.2); display: flex; gap: 1rem; align-items: center;">
+                    <input type="text" id="sageInput" style="flex: 1; padding: 1rem 1.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 25px; color: var(--ethereal-white); font-size: 1rem; outline: none;" placeholder="Share your thoughts with Sage...">
+                    <button onclick="sendSageMessage()" style="width: 50px; height: 50px; background: var(--gradient-quantum); border: none; border-radius: 50%; color: var(--void-black); font-size: 1.2rem; cursor: pointer; transition: all 0.3s ease;">
+                        <span>→</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <script>
+        // Particle System
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Sage AI Chat System
+        let chatHistory = [];
+        let currentChatStep = 0;
+        let userProfile = {};
+
+        function startSageChat(focus = null) {
+            document.getElementById('sageModal').classList.add('active');
+            if (focus) {
+                userProfile.initialFocus = focus;
+            }
+            document.getElementById('sageInput').focus();
+        }
+
+        function sendSageMessage() {
+            const input = document.getElementById('sageInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+
+            // Add user message
+            addChatMessage(message, 'user');
+            input.value = '';
+            currentChatStep++;
+
+            // Show typing indicator
+            setTimeout(() => {
+                const response = generateSageResponse(message, currentChatStep);
+                addChatMessage(response, 'sage');
+            }, 1800);
+        }
+
+        function addChatMessage(message, sender) {
+            const container = document.getElementById('sageMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.style.marginBottom = '1.5rem';
+            messageDiv.style.textAlign = sender === 'user' ? 'right' : 'left';
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.style.display = 'inline-block';
+            contentDiv.style.padding = '1rem 1.5rem';
+            contentDiv.style.borderRadius = '20px';
+            contentDiv.style.maxWidth = '80%';
+            contentDiv.style.lineHeight = '1.5';
+            contentDiv.textContent = message;
+            
+            if (sender === 'sage') {
+                contentDiv.style.background = 'rgba(255, 215, 0, 0.1)';
+                contentDiv.style.border = '1px solid rgba(255, 215, 0, 0.3)';
+                contentDiv.style.color = 'var(--ethereal-white)';
+            } else {
+                contentDiv.style.background = 'var(--gradient-cosmic)';
+                contentDiv.style.color = 'var(--ethereal-white)';
+            }
+            
+            messageDiv.appendChild(contentDiv);
+            container.appendChild(messageDiv);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function generateSageResponse(userMessage, chatStep) {
+            const message = userMessage.toLowerCase();
+
+            // Name detection
+            if (chatStep === 1) {
+                const nameMatch = userMessage.match(/(?:i'm |my name is |i am |call me |name's )(\w+)/i);
+                if (nameMatch) {
+                    userProfile.name = nameMatch[1];
+                    return `${userProfile.name}, what a beautiful name! I can already sense your unique energy signature resonating with mine. I'm feeling some interesting patterns... Tell me, what's been weighing on your mind lately? What area of your life feels like it needs transformation?`;
+                } else {
+                    return `Thank you for sharing. I can feel the sincerity in your energy. Now, what would you say is the main area where you're seeking growth or support? Is it your career path, relationships, health and vitality, or perhaps something else entirely?`;
+                }
+            }
+
+            // Topic detection and responses
+            if (message.includes('career') || message.includes('work') || message.includes('job') || message.includes('professional') || message.includes('business')) {
+                userProfile.focus = 'career';
+                return `I sense strong professional energy in you, but there's some turbulence. Career challenges often reflect deeper patterns. Based on our conversation, I'm seeing a clear pattern. Your energy signature suggests you'd resonate powerfully with our 文昌智慧 (Scholar's Wisdom) or 领导威严 (Leadership Authority) designs. Would you like me to analyze which specific combination would be most powerful for your unique situation?`;
+            }
+
+            if (message.includes('money') || message.includes('wealth') || message.includes('financial') || message.includes('income') || message.includes('prosperity')) {
+                userProfile.focus = 'wealth';
+                return `Ah, wealth energy - one of my specialties. I'm sensing some blocks in your financial flow. Your financial energy pattern is quite clear now. I'm strongly drawn to recommend our 五方财门 (Five Directions Wealth Gateway) or 财源滚滚 (Flowing Prosperity) for you. Shall I design a personalized wealth enhancement plan?`;
+            }
+
+            if (message.includes('love') || message.includes('relationship') || message.includes('dating') || message.includes('romance') || message.includes('partner')) {
+                userProfile.focus = 'love';
+                return `Love energy is so beautiful and complex. Your heart energy is ready for transformation. I'm feeling a strong connection to our 桃花磁场 (Magnetic Charm) design for you - it will enhance your natural magnetism. Would you like me to create a love energy enhancement plan specifically for you?`;
+            }
+
+            if (message.includes('health') || message.includes('wellness') || message.includes('energy') || message.includes('tired') || message.includes('healing')) {
+                userProfile.focus = 'health';
+                return `Your vitality patterns are very interesting. I'm sensing you'd benefit greatly from our 精神清明 (Mental Clarity) or 药师佛疗愈 (Medicine Buddha Healing) designs. Shall I craft a complete wellness enhancement plan for you?`;
+            }
+
+            // Progressive responses
+            const progressiveResponses = [
+                "I'm beginning to see the bigger picture of your energy pattern. There's something really beautiful and unique about your situation. Can you tell me about a time when you felt most aligned and powerful?",
+                "Your energy signature is becoming clearer to me. I'm sensing some old patterns that might be holding you back. What would you say is your biggest inner obstacle right now?",
+                "Fascinating! I'm picking up on some very specific energetic signatures. Your elemental nature is quite distinctive - I'm sensing some fire energy, but also earth influences.",
+                "Perfect! I now have a complete picture of your energy signature. Based on everything you've shared, I have a very specific recommendation that I believe will be transformational for you. Would you like me to reveal your personalized EastForge recommendation?"
+            ];
+
+            return progressiveResponses[Math.min(chatStep - 2, progressiveResponses.length - 1)];
+        }
+
+        // Modal Functions
+        function openAuthModal() {
+            document.getElementById('authModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.classList.remove('active');
+            });
+        }
+
+        function switchAuthMode() {
+            const title = document.getElementById('modalTitle');
+            const submitText = document.getElementById('submitText');
+            const switchText = document.getElementById('switchText');
+            const switchLink = document.getElementById('switchLink');
+
+            if (submitText.textContent === 'Sign In') {
+                title.textContent = 'Create Account';
+                submitText.textContent = 'Create Account';
+                switchText.textContent = 'Already have an account?';
+                switchLink.textContent = 'Sign in';
+            } else {
+                title.textContent = 'Welcome Back';
+                submitText.textContent = 'Sign In';
+                switchText.textContent = "Don't have an account?";
+                switchLink.textContent = 'Sign up';
+            }
+        }
+
+        // Social Login Functions
+        function socialLogin(provider) {
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+                alert(`${provider.charAt(0).toUpperCase() + provider.slice(1)} login successful! Welcome to EastForge.`);
+                closeModal();
+            }, 2000);
+        }
+
+        // Crypto Wallet Functions
+        function walletLogin(wallet) {
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+                if (wallet === 'metamask') {
+                    if (typeof window.ethereum !== 'undefined') {
+                        window.ethereum.request({ method: 'eth_requestAccounts' })
+                            .then(accounts => {
+                                alert(`Connected to MetaMask: ${accounts[0].substring(0, 6)}...${accounts[0].substring(38)}`);
+                                closeModal();
+                            })
+                            .catch(error => {
+                                alert('MetaMask connection failed: ' + error.message);
+                            });
+                    } else {
+                        alert('MetaMask not detected. Please install MetaMask browser extension.');
+                    }
+                } else {
+                    alert(`${wallet} wallet connection successful! Welcome to EastForge.`);
+                    closeModal();
+                }
+            }, 1500);
+        }
+
+        // Utility Functions
+        function showLoading() {
+            document.getElementById('loadingOverlay').classList.add('active');
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingOverlay').classList.remove('active');
+        }
+
+        // Scroll Reveal Animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            revealOnScroll();
+
+            // Add click handlers for product cards
+            document.querySelectorAll('.product-mini-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const title = this.querySelector('h5').textContent;
+                    userProfile.interestedProduct = title;
+                    startSageChat();
+                    
+                    // Add a specific opening message
+                    setTimeout(() => {
+                        const productMessage = `I noticed you're interested in ${title}. That's a fascinating choice - it tells me a lot about your energy needs. Tell me more about what drew you to this particular design, and I can help you understand if it's the perfect match for your situation.`;
+                        addChatMessage(productMessage, 'sage');
+                    }, 500);
+                });
+            });
+            
+            // Add click handlers for family system cards
+            document.querySelectorAll('.family-system-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const title = this.querySelector('h4').textContent;
+                    userProfile.interestedProduct = title;
+                    userProfile.productCategory = 'family';
+                    startSageChat('family');
+                });
+            });
+            
+            // Add click handler for ancestral card
+            document.querySelector('.ancestral-card')?.addEventListener('click', function() {
+                userProfile.interestedProduct = 'Ancestral Connection Matrix';
+                userProfile.productCategory = 'ancestral';
+                startSageChat('ancestral');
+            });
+
+            // Form handler
+            document.getElementById('authForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                showLoading();
+                
+                const submitText = document.getElementById('submitText').textContent;
+                
+                setTimeout(() => {
+                    hideLoading();
+                    alert(`${submitText} successful! Welcome to EastForge.`);
+                    closeModal();
+                }, 2000);
+            });
+        });
+
+        document.addEventListener('scroll', revealOnScroll);
+
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                closeModal();
+            }
+        });
+
+        // Enter key for chat input
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && e.target.id === 'sageInput') {
+                sendSageMessage();
+            }
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
